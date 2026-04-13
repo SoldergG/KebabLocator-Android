@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kebablocator.android.ui.components.glassCard
 import com.kebablocator.android.ui.theme.KebabColors
+import androidx.compose.ui.graphics.Color
 import com.google.android.gms.maps.model.LatLng
 import com.kebablocator.android.viewmodels.LocationViewModel
 
@@ -249,6 +250,3 @@ fun LocationScreen(locationVM: LocationViewModel) {
     }
 }
 
-private val Color.Companion.Black get() = android.graphics.Color.BLACK.let {
-    androidx.compose.ui.graphics.Color(it)
-}

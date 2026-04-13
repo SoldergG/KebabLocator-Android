@@ -13,6 +13,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kebablocator.android.models.KebabShop
 import com.kebablocator.android.models.SupabaseShopDTO
+import com.kebablocator.android.models.toKebabShop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -179,7 +180,7 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
                 }
 
                 // Create the shop DTO with image URL
-                val shopWithImage = dto.copy(image_url = imageUrl)
+                val shopWithImage = dto.copy(imageUrl = imageUrl)
 
                 val success = withContext(Dispatchers.IO) {
                     postShopToSupabase(shopWithImage)

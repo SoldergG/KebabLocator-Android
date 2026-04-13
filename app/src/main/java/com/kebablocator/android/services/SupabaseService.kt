@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kebablocator.android.models.KebabShop
 import com.kebablocator.android.models.SupabaseShopDTO
+import com.kebablocator.android.models.toKebabShop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext

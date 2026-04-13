@@ -23,7 +23,7 @@ import com.kebablocator.android.viewmodels.FavoritesViewModel
 import com.kebablocator.android.viewmodels.LocationViewModel
 import java.util.UUID
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun AddKebabScreen(
     locationVM: LocationViewModel,
@@ -417,7 +417,7 @@ fun AddKebabScreen(
                             contributorId = null
                         )
 
-                        favoritesVM.submitShop(dto, null) { success ->
+                        favoritesVM.submitShop(dto, null) { success, _ ->
                             isSubmitting = false
                             if (success) onBack()
                         }
