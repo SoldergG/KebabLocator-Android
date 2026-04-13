@@ -76,21 +76,19 @@ data class KebabShop(
 ) {
 
     /** Check if the shop is currently open based on device time */
-    fun isOpenNow(): Boolean {
-        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-        return if (closeHour > openHour) {
-            // Normal hours (e.g. 11:00 - 23:00)
-            hour >= openHour && hour < closeHour
-        } else {
-            // Overnight hours (e.g. 22:00 - 07:00)
-            hour >= openHour || hour < closeHour
+    val isOpenNow: Boolean
+        get() {
+            val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+            return if (closeHour > openHour) {
+                hour >= openHour && hour < closeHour
+            } else {
+                hour >= openHour || hour < closeHour
+            }
         }
-    }
 
     /** Formatted open status string */
-    fun statusText(): String {
-        return if (isOpenNow()) "Open Now" else "Closed"
-    }
+    val statusText: String
+        get() = if (isOpenNow) "Open Now" else "Closed"
 
     /** Distance from a given coordinate in kilometers using Location.distanceBetween */
     fun distanceFrom(lat: Double, lon: Double): Double {
@@ -826,15 +824,15 @@ data class SupabaseShopDTO(
     @SerializedName("close_hour") val closeHour: Int,
     @SerializedName("description") val description: String,
     @SerializedName("category") val category: String,
-    @SerializedName("phone") val phone: String,
-    @SerializedName("website") val website: String,
+    @SerializedName("phone") val phone: String?,
+    @SerializedName("website") val website: String?,
     @SerializedName("popular_dishes") val popularDishes: List<String>,
     @SerializedName("has_delivery") val hasDelivery: Boolean,
     @SerializedName("has_dine_in") val hasDineIn: Boolean,
     @SerializedName("has_takeaway") val hasTakeaway: Boolean,
     @SerializedName("image_url") val imageUrl: String?,
-    @SerializedName("is_sponsored") val isSponsored: Boolean,
-    @SerializedName("is_verified") val isVerified: Boolean,
+    @SerializedName("is_sponsored") val isSponsored: Boolean = false,
+    @SerializedName("is_verified") val isVerified: Boolean = false,
     @SerializedName("contributor_id") val contributorId: String?
 )
 

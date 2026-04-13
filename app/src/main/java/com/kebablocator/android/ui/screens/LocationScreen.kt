@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kebablocator.android.ui.components.glassCard
 import com.kebablocator.android.ui.theme.KebabColors
+import com.google.android.gms.maps.model.LatLng
 import com.kebablocator.android.viewmodels.LocationViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -163,7 +164,11 @@ fun LocationScreen(locationVM: LocationViewModel) {
                 Button(
                     onClick = {
                         if (addressInput.isNotBlank()) {
-                            locationVM.geocodeAddress(context, addressInput)
+                            locationVM.geocodeAddress(context, addressInput) { latLng ->
+                                if (latLng != null) {
+                                    locationVM.setManualLocation(latLng.latitude, latLng.longitude, addressInput)
+                                }
+                            }
                         }
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = KebabColors.accentOrange),

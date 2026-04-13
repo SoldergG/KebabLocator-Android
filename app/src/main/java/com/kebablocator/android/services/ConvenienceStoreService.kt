@@ -61,11 +61,7 @@ object ConvenienceStoreService {
         }
 
         // Sort by distance from user
-        val userLocation = Location("").apply {
-            latitude = lat
-            longitude = lon
-        }
-        finalStores.sortedBy { it.distanceTo(userLocation) }
+        finalStores.sortedBy { it.distanceFrom(lat, lon) }
     }
 
     // ── Callback-based API ──────────────────────────────────────────────
@@ -151,11 +147,7 @@ object ConvenienceStoreService {
             } else {
                 uniqueStores
             }
-            val userLocation = Location("").apply {
-                latitude = lat
-                longitude = lon
-            }
-            val sorted = finalStores.sortedBy { it.distanceTo(userLocation) }
+            val sorted = finalStores.sortedBy { it.distanceFrom(lat, lon) }
             callback(sorted)
         }.start()
     }

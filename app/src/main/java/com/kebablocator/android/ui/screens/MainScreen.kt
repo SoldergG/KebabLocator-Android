@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -65,10 +66,9 @@ fun MainScreen(
         navController.navigate("shop_detail/${shop.id}")
     }
 
-    // Initialize viewmodels
+    // Initialize location viewmodel (FavoritesViewModel auto-initializes in init{})
     LaunchedEffect(Unit) {
         locationViewModel.initialize(context)
-        favoritesViewModel.initialize(context)
     }
 
     Scaffold(
