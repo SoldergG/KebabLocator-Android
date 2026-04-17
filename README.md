@@ -58,3 +58,12 @@ app/src/main/java/com/kebablocator/android/
 ├── utils/           # Utilities
 └── MainActivity.kt  # Entry point
 ```
+
+
+---
+
+<div align="center">
+
+**Built by [Lucas Solderg](https://soldergg.github.io)** · iOS & Mobile Developer from Portugal
+
+</div>
